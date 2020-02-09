@@ -1,0 +1,11 @@
+{
+  "name": "my-own-jest",
+  "description": "a super minimal jest",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node --require ./setup-globals.js"
+  },
+  "keywords": [],
+  "author": "Hewon Jeong <hewon.jng@gmail.com>",
+  "license": "MIT"
+}
