@@ -22,7 +22,18 @@ const fn = impl => {
     return impl(...args)
   }
   mockFn.mock = { calls: [] }
+  mockFn.mockImplementation = newImpl => {
+    impl = newImpl
+  }
   return mockFn
 }
 
-module.exports = { test, expect, fn }
+const spyOn = (obj, prop) => {
+  const originalValue = obj[prop]
+  obj[prop] = fn()
+  obj[prop].mockRestore = () => {
+    obj[prop] = originalValue
+  }
+}
+
+module.exports = { test, expect, spyOn }
