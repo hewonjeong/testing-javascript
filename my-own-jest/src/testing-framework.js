@@ -16,4 +16,13 @@ const expect = actual => ({
   }
 })
 
-module.exports = { test, expect }
+const fn = impl => {
+  const mockFn = (...args) => {
+    mockFn.mock.calls.push(args)
+    return impl(...args)
+  }
+  mockFn.mock = { calls: [] }
+  return mockFn
+}
+
+module.exports = { test, expect, fn }
